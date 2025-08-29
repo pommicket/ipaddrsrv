@@ -1,0 +1,7 @@
+[package]
+name = "ipaddrsrv"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ctrlc = { version = "3.4.7", features = ["termination"] }

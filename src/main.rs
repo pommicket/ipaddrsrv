@@ -78,13 +78,13 @@ impl ConnectionSettings {
 			}
 		}
 		if conn.state == 4 {
-			// 90B is more than long enough for our response
+			// 128B is more than long enough for our response
 			write!(
-				&mut buffer[..90],
+				&mut buffer[..128],
 				"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n{addr}\n\0"
 			)
 			.expect("?? writing address to buffer failed??");
-			let length = buffer[..90]
+			let length = buffer[..128]
 				.iter()
 				.position(|&c| c == 0)
 				.expect("?? no null byte even though we just wrote one??");
